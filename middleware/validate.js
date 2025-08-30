@@ -14,6 +14,12 @@ const validate = [
     .isEmail()
     .withMessage("Invalid email format"),
 
+  body("subject")
+    .notEmpty()
+    .withMessage("subject is required")
+    .isLength({ min: 5 })
+    .withMessage("Subject must be at least 5 characters"),
+
   body("message")
     .notEmpty()
     .withMessage("Message is required")
