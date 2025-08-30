@@ -10,6 +10,7 @@ const contactRoute = require("./route/user");
 const connectDB = require("./database/connectDB");
 
 const app = express();
+app.set("trust proxy", 1);  
 //cors configuration
 const corsOptions = {
   origin: ["https://senthilnathan-2004.github.io", "http://localhost:3000"],
