@@ -13,18 +13,6 @@ const contact = async (req, res) => {
       return res.status(400).json({ error: "Invalid email format" });
     }
 
-    if (message.length < 5) {
-      return res
-        .status(400)
-        .json({ error: "Message must be at least 5 characters long" });
-    }
-
-    if (subject.length < 5) {
-      return res
-        .status(400)
-        .json({ error: "Subject must be at least 5 characters long" });
-    }
-
     // Save to database
     const newUser = new User({ name, email, subject, message });
     await newUser.save();
