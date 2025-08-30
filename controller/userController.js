@@ -30,7 +30,7 @@ const contact = async (req, res) => {
     await newUser.save();
 
     // Send mail to user
-    await sendMail(name, email, message);
+    await sendMail(name, email, subject, message);
 
     res.status(200).json({ message: "Message sent successfully" });
   } catch (error) {
