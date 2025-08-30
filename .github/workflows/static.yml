@@ -1,0 +1,14 @@
+name: Auto Deploy to Render
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # runs every 10 minutes
+  workflow_dispatch:          # also allow manual trigger
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Render Hook
+        run: |
+          curl -X POST "${{ secrets.RENDER_HOOK_URL }}"
