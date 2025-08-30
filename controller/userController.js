@@ -2,9 +2,9 @@ const User = require("../model/usermodel");
 const { sendMail } = require("../middleware/sendMail");
 
 const contact = async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, subject, message } = req.body;
   try {
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !subject) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -19,8 +19,14 @@ const contact = async (req, res) => {
         .json({ error: "Message must be at least 5 characters long" });
     }
 
+    if (subject.length < 5) {
+      return res
+        .status(400)
+        .json({ error: "Subject must be at least 5 characters long" });
+    }
+
     // Save to database
-    const newUser = new User({ name, email, message });
+    const newUser = new User({ name, email, subject, message });
     await newUser.save();
 
     // Send mail to user
