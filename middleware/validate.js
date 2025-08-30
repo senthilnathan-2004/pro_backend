@@ -4,9 +4,7 @@ const { body, validationResult } = require("express-validator");
 const validate = [
   body("name")
     .notEmpty()
-    .withMessage("Name is required")
-    .isLength({ min: 2 })
-    .withMessage("Name must be at least 2 characters"),
+    .withMessage("Name is required"),
 
   body("email")
     .notEmpty()
@@ -16,15 +14,12 @@ const validate = [
 
   body("subject")
     .notEmpty()
-    .withMessage("subject is required")
-    .isLength({ min: 5 })
-    .withMessage("Subject must be at least 5 characters"),
+    .withMessage("subject is required"),
 
   body("message")
     .notEmpty()
-    .withMessage("Message is required")
-    .isLength({ min: 5 })
-    .withMessage("Message must be at least 5 characters"),
+    .withMessage("Message is required"),
+
 
   (req, res, next) => {
     const errors = validationResult(req);
