@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-const sendMail = (name, email, message) => {
+const sendMail = (name, email, subject, message) => {
   // Create transporter
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -14,7 +14,7 @@ const sendMail = (name, email, message) => {
   const mailOptions = {
     from: process.env.ADMIN_EMAIL,
     to: email,
-    subject: "Thank you for contacting us!",
+    subject: subject,
     text: `Hi ${name},\n\nThank you for reaching 
      out. We have received your 
      message:\n\n"${message}"\n\n`,
