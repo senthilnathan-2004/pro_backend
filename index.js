@@ -13,7 +13,7 @@ const app = express();
 app.set("trust proxy", 1);  
 //cors configuration
 const corsOptions = {
-  origin: ["https://senthilnathan-2004.github.io", "http://localhost:3000"],
+  origin:'https://senra.run.place/',
   credentials: true,
   optionSuccessStatus: 200,
 };
